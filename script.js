@@ -6,12 +6,12 @@ var classes;
 var modelLoaded = false;
 
 window.onload = function () {
-  classes = ['Aluminio', 'Envase', 'Vidrio', 'Orgánico', 'Otros Plásticos', 'Papel y Cartón', 'Plástico', 'Textiles', 'Madera'];
+  classes = ['Aluminium', 'Packaging', 'Glass', 'Organic', 'Other Plastics', 'Paper and Cardboard', 'Plastic', 'Textiles', 'Wood'];
   canvas = document.getElementById('canvas');
   predictionLabel = document.getElementById("predictionLabel");
 
-  canvas.width = 512;
-  canvas.height = 512;
+  canvas.width = 256;
+  canvas.height = 256;
 
   document.getElementById("predictButton").onclick = function () {
     if (modelLoaded) {
@@ -30,12 +30,12 @@ window.onload = function () {
 
   (async () => {
     console.log("Loading model");
-    model = await tf.loadGraphModel("WasteClassificationModelJS/model.json");
+    model = await tf.loadGraphModel("/model.json");
 
     predictionLabel.innerHTML = "The model has been successfully loaded. Please choose an image.";
     modelLoaded = true;
     document.getElementById("predictButton").className = "center-text btn btn-lg btn-success rounded-5";
-    document.getElementById("predictButton").style.backgroundColor = "#48e073";
+    document.getElementById("predictButton").style.backgroundColor = "#17de8f";
     console.log("Model loaded");
   })();
 };
@@ -50,7 +50,7 @@ function predict() {
   console.log(predictions);
   console.log(predictions.indexOf(Math.max.apply(null, predictions)));
 
-  predictionLabel.innerHTML = 'Prediction: <span style="color:#48e073">' + classes[predictions.indexOf(Math.max.apply(null, predictions))] + "</span>";
+  predictionLabel.innerHTML = 'Prediction: <span style="color:#17de8f">' + classes[predictions.indexOf(Math.max.apply(null, predictions))] + "</span>";
 }
 
 function uploadImage() {
