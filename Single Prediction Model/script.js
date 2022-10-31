@@ -30,7 +30,7 @@ window.onload = function () {
 
   (async () => {
     console.log("Loading model");
-    model = await tf.loadGraphModel("/model.json");
+    model = await tf.loadGraphModel("/model.h5");
 
     predictionLabel.innerHTML = "The model has been successfully loaded. Please choose an image.";
     modelLoaded = true;
